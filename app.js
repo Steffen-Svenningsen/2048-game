@@ -16,14 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }    
         generate()
         generate()
-        
     }
     createBoard()
 
     // generate a new number for the tile
     function generate() {
         const randomNumber = Math.floor(Math.random() * squares.length)
-        console.log(randomNumber)
         if (squares[randomNumber].innerHTML == 0) {
             squares[randomNumber].innerHTML = 2
             checkForGameOver()
@@ -129,10 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function combineColumn() {
         for (let i = 0; i < 12; i++) {
-            if (squares[i].innerHTML === squares[i+width].innerHTML) {
-                let combinedTotal = parseInt(squares[i+width].innerHTML) + parseInt(squares[i+1].innerHTML)
+            if (squares[i].innerHTML === squares[i + width].innerHTML) {
+                let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i + width].innerHTML)
                 squares[i].innerHTML = combinedTotal
-                squares[i+width].innerHTML = 0
+                squares[i + width].innerHTML = 0
                 score += combinedTotal
                 scoreDisplay.innerHTML = score
             }
@@ -186,10 +184,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // check for the number 2048 in the swaures to win
     function checkForWin() {
         for (let i = 0; i < squares.length; i++) {
-            if (squares[i].innerHTML == 2048)
+            if (squares[i].innerHTML == 2048) {
                 resultDisplay.innerHTML = "You WIN!"
-                document.removeEventListener('keydown', control)
+                resultDisplay.innerHTML.appendChild
+                document.removeEventListener("keydown", control)
                 setTimeout(clear, 3000)
+            }
         }
     }
 
